@@ -277,4 +277,17 @@ span.picture {
 .users.follow {
   padding: 0;
 }
+.image-size {
+  max-width: 300px;
+  max-height: 200px;
+}
+.center_div
+{
+       margin: auto;
+       position: absolute;
+       top: 0; 
+       left: 0;
+       bottom: 0; 
+       right: 0;
+ }
 

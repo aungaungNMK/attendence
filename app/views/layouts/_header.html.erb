@@ -3,6 +3,8 @@
     <%= link_to "Attendence", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Students', students_path %></li>
+        <li><%= link_to 'Courses', courses_path %></li>
        <% if current_user %>
            <li> <%= link_to 'Logout', destroy_user_session_path, method: :delete%></li>
         <% else %>
