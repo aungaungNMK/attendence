@@ -18,6 +18,11 @@
         <%= form.text_field :name, id: :course_name %>
       </div>
 
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description, :cols => 30, :rows => 10 %>
+      </div>
+
       <div class="actions">
         <%= form.submit %>
       </div>
