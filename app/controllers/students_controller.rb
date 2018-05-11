@@ -1,20 +1,32 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /students
   # GET /students.json
   def index
     if current_user.admin?
-      @students = Student.all
+      @students = Student.search(params[:search] ).order(sort_column + " " + sort_direction)
     else
-      @students = Student.where(user_id: current_user.id)
+      @students = Student.search(params[:search]).where(user_id: current_user.id)
     end
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
+    @student = Student.find(params[:id])
+    respond_to do |format|
+      format.html 
+      format.pdf do
+        pdf = StudentPdf.new(@student)
+        send_data pdf.render,
+                  filename: "student_#{@student.name}",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
   end
 
   # GET /students/new
@@ -47,7 +59,7 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to students_url, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
@@ -74,6 +86,14 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:code, :name, :image, :course_id)
+      params.require(:student).permit(:code, :name, :course_id)
+    end
+    #add sortable format
+    def sort_column
+      Student.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

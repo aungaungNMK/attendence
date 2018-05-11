@@ -54,4 +54,7 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'carrierwave', '~> 1.0'
+gem 'prawn'
+gem 'responders'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 #gem 'mini_magick'
