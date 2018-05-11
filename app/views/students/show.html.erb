@@ -29,5 +29,6 @@
 
     <%= link_to 'Edit', edit_student_path(@student) %> |
     <%= link_to 'Back', students_path %>
+    <%= link_to "Print(PDF)", student_path(@student, format: 'pdf') %>
   </div>
 </div>
