@@ -1,3 +1,6 @@
+/*
+*= require dataTables/jquery.dataTables
+*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
 $gray-medium-light: #eaeaea;
@@ -187,37 +190,6 @@ checkbox {
 }
 /* microposts */
 
-.microposts {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
-  }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
-}
-
 aside {
   textarea {
     height: 100px;
@@ -291,3 +263,32 @@ span.picture {
        right: 0;
  }
 
+ .footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+strong{
+  text-align: right;
+}
+dl.dl-horizontal {
+  p {
+    margin: 0;
+  }
+
+  dd {
+    margin-bottom: 10px;
+    margin-left: 200px;
+  }
+
+  dt {
+    overflow: initial;
+    text-overflow: initial;
+    width: 180px;
+    white-space: normal;
+  }
+}
