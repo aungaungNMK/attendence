@@ -17,8 +17,13 @@ class StudentsController < ApplicationController
   # GET /students/1.json
   def show
     @student = Student.find(params[:id])
+    if current_user.admin?
+      @student.update_attributes(status: 'complete')
+      @student.save!
+    end
     respond_to do |format|
-      format.html 
+      format.html
+      format.json { head :no_content }
       format.pdf do
         pdf = StudentPdf.new(@student)
         send_data pdf.render,
@@ -31,7 +36,7 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    @student = current_user.students.build
+    @student = current_user.students.build(status: 'imcomplete')
   end
 
   # GET /students/1/edit
@@ -42,7 +47,7 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = current_user.students.build(student_params)
-
+    @student.status = 'imcomplete'
     respond_to do |format|
       if @student.save
         format.html { redirect_to students_url, notice: 'Student was successfully created.' }

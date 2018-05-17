@@ -9,17 +9,11 @@
       <th>Course</th>
       <th>created_at</th>
       <th>updated_at</th>
-      <th>
-      <%= select_tag 'user_id', options_for_select(@users.collect{ |u| [u.name, u.id] }) %></th>
+      <th>Creater User</th>
       <th></th>
       <th></th>
       <th></th>
-      <th>
-        <select>
-          <option>All</option>
-          <option>completed</option>
-          <option>incomplete</option>
-        </select>
+      <th>status
       </th>
     </tr>
   </thead>
@@ -34,7 +28,11 @@
         <td> <%= student.created_at %></td>
         <td><%= student.updated_at%> </td>
         <td><%= student.user.name %></td>
-        <td><%= link_to 'Show', student %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to "Print(PDF)", student_path(student, format: 'pdf')%></td>
+        <% else %>
+          <td><%= link_to 'Show', student %></td>
+        <% end %>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa-trash-o" %></td>
         <td><%= student.status%> </td>

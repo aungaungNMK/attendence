@@ -23,6 +23,11 @@
         <%= form.text_area :description, :cols => 30, :rows => 10 %>
       </div>
 
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.select :user_id, User.all.map{ |u| [u.name, u.id]}, {:prompt => "select"} %>
+      </div>
+
       <div class="actions">
         <%= form.submit %>
       </div>
