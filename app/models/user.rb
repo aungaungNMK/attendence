@@ -10,6 +10,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :students
+  has_many :courses
 
   #overrrite the build method to login with name or email
   def self.find_for_database_authentication(warden_conditions)
