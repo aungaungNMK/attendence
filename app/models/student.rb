@@ -15,7 +15,7 @@ class Student < ApplicationRecord
     #simple search form
     def self.search(search)
         if search.present? 
-            where('name LIKE ?', "%#{search}%") || where('code LIKE ?', "%#{search}%") 
+            where('user_id LIKE ?', "%#{search}%")
         else
           all   
         end

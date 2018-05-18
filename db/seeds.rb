@@ -19,8 +19,8 @@
  User.create(email: "Latha@mail.com", password: "password", password_confirmation: "password", admin: false, name: "Latha")
 
  #pyay
-Course.create(name: "Pyay (Office 2016 Course)", description: "Office 2016 Course \n  Window's 10 \n Microsoft Word 2016 \n Microsoft Excel 2016 \n Microsoft Power Point 2016 \n Internet and E-mail Printing", user_id: User.find_by(name: "Pyay").id)
-Course.create(name: "Pyay (D.T.P Course)", description: "D.T.P Course \n Corel Draw X4 \n Adobe Photoshop C.S.3 \n Adobe PageMaker 7.0 \n Printing", user_id: User.find_by(name: "Pyay").id)
+Course.create(name: "Pyay (Office 2016 Course)", description: "Office 2016 Course \n  Window's 10 \n Microsoft Word 2016 \n Microsoft Excel 2016 \n Microsoft Power Point 2016 \n Internet and E-mail \n Printing", user_id: User.find_by(name: "Pyay").id)
+Course.create(name: "Pyay (D.T.P Course)", description: "D.T.P Course \n Corel Draw X4 \n Adobe Photoshop C.S.3 \n Adobe Page Maker 7.0 \n Adobe Acrobat 7.0 \n Printing", user_id: User.find_by(name: "Pyay").id)
 Course.create(name: "Pyay (Advanced Excel 2016 Course)", description: "Advanced Excel 2016 Course \n Advanced Excel 2016", user_id: User.find_by(name: "Pyay").id)
 Course.create(name: "Pyay (MYOB Course)", description: "MYOB Course \n MYOB", user_id: User.find_by(name: "Pyay").id)
 Course.create(name: "Pyay (AutoCAD Course)", description: "AutoCAD Course \n AutoCAD (General)", user_id: User.find_by(name: "Pyay").id)
@@ -36,7 +36,7 @@ Course.create(name: "Magway (Advanced Excel 2016 Course)", description: "Advance
 
 #dawei
 Course.create(name: "Dawei (Office 2016 Course)", description: "Office 2016 Course \n Window's 10 \n Microsoft Word 2016 \n Microsoft Excel 2016  \n Microsoft Power Point 2016  \n Scanning and Printing", user_id: User.find_by(name: "Dawei").id)
-Course.create(name: "Dawei (D.T.P Course)", description: "D.T.P Course    \n Corel Draw X4   \n Adobe Photoshop C.S.3   \n Adobe PageMaker 7.0   \n Scanning and Printing", user_id: User.find_by(name: "Dawei").id)
+Course.create(name: "Dawei (D.T.P Course)", description: "D.T.P Course    \n Corel Draw X4   \n Adobe Photoshop C.S.3   \n Adobe PageMaker 7.0   \n Adobe Acrobat 7.0 \n Scanning and Printing", user_id: User.find_by(name: "Dawei").id)
 Course.create(name: "Dawei (Advanced Excel 2016 Course)", description: "Advanced Excel 2016 Course \n Advanced Excel 2016", user_id: User.find_by(name: "Dawei").id)
 
 #min hla

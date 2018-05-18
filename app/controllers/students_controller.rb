@@ -91,7 +91,7 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:code, :name, :course_id)
+      params.require(:student).permit(:code, :name, :course_id, :user_id)
     end
     #add sortable format
     def sort_column

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'users/index'
-
   resources :courses
   devise_for :users, :controllers => { :registrations => "registrations" }, :path_prefix => 'd'
   resources :students
