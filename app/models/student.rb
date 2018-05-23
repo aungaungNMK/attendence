@@ -9,15 +9,15 @@ class Student < ApplicationRecord
     #validate :image_size_validation
 
     #form field validation
-    validates :name,  presence: true, length: { minimum: 8 }
+    validates :name, presence: true, length: {maximum: 255}, format: { :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/, message: "may only contain letters and numbers." }
     validates :code,  presence: true
 
     #simple search form
     def self.search(search)
         if search.present? 
-            where('user_id LIKE ?', "%#{search}%")
+            where('user_id = ?', search)
         else
-          all   
+            all   
         end
     end
 
