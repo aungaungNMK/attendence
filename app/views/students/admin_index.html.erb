@@ -1,6 +1,7 @@
 <h1>All Students</h1>
 <%= link_to 'New Student', new_student_path, class: "btn btn-primary" %>
-<table id="student" class="table table-hover">
+
+<table id="example" class="table table-hover">
   <thead>
     <tr>
       <th>Student Code</th>
@@ -8,8 +9,15 @@
       <th>Course</th>
       <th>created_at</th>
       <th>updated_at</th>
-      <th>status</th>
+      <% if current_user.admin? %>
+      <th>
+        <%= form_tag students_path, :method => 'get', :id => "user_select" do %>
+          <%= select_tag :user_id, options_from_collection_for_select(User.all, 'id', 'name'), id: "user_select", onchange: 'this.form.submit();', prompt: "Created User" %>
+        <% end %>
+      </th>
+      <% end %>
       <th></th>
+      <th>status</th>
       <th></th>
       <th></th>
       
@@ -25,8 +33,14 @@
         <td><%= student.course.name %></td>
         <td> <%= student.created_at %></td>
         <td><%= student.updated_at%> </td>
+        
+        <% if current_user.admin? %>
+          <td><%= student.user.name %></td>
+          <td><%= link_to "Print(PDF)", student_path(student, format: 'pdf')%></td>
+        <% else %>
+          <td><%= link_to 'Show', student %></td>
+        <% end %>
         <td><%= student.status%> </td>
-        <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa-trash-o" %></td>
       </tr>

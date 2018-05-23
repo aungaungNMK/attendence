@@ -7,10 +7,22 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     if current_user.admin?
-      @students = Student.search(params[:search] ).order(sort_column + " " + sort_direction)
+      if params[:user_id]
+        @students = Student.search(params[:user_id])
+      end
+        @students = Student.search(params[:user_id] )
+        render :admin_index
     else
-      @students = Student.search(params[:search]).where(user_id: current_user.id)
+      @students = Student.search(params[:search]).where(user_id: current_user.id, status: 'imcomplete')
     end
+  end
+
+  def print_selected
+    params[:ids].each do |id|
+      student = Student.find(id)
+      student.destroy
+    end unless params[:ids].blank?
+    redirect_to students_url, :notice => 'Selected student are deleted successfully!'
   end
 
   # GET /students/1
