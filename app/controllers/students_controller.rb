@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
         @students = Student.search(params[:user_id] )
         render :admin_index
     else
-      @students = Student.search(params[:search]).where(user_id: current_user.id, status: 'imcomplete')
+      @students = Student.search(params[:search]).where(user_id: current_user.id)
     end
   end
 
