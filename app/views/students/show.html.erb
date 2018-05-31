@@ -23,7 +23,6 @@
       <dd><%= @student.course.name %></dd>
     </dl>
 
-    <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default btn-float btn-cancel"  %>
     <%= link_to 'Back', students_path, class: "btn btn-default btn-float btn-cancel"  %>
     <% if current_user.admin? %>
        <%= link_to "Print(PDF)", student_path(@student, format: 'pdf'), class: "btn btn-default btn-float btn-cancel"  %>
