@@ -1,17 +1,35 @@
 class StudentPdf < Prawn::Document
   require 'prawn-styled-text'
     def initialize(student)
-      super(top_margin: 270, margin_left: 15, margin_right: 15, :background => "public/uploads/5.png", :page_layout => :portrait)
+      super(top_margin: 119, :page_layout => :portrait, :page_size => [558, 708] ) #[380, 500]
       @student = student
+      header
       student_name
       signature
     end
+    def header
+      text 'SOFT GUIDE COMPUTER TRAINING CERTER', size: 12, style: :bold, align: :center
+      move_down 10
+      styled_text '<div  style="text-align: center; size: 12;">A Recognized Centre of Londan Chamber of Commerce & Industry</div>'
+      styled_text '<div style="text-align: center; size: 12;"> No.52, 19th St., Latha Tsp., Yangon. Tel: 382180</div>'
+      styled_text '<div style="text-align: center; size: 12;"> E-mail: softguide.atn@gmail.com</div>'
+      move_down 30
+    end
+
     def student_name
-        text "Student Name: #{@student.name}", size: 30, style: :bold
-        text "Course Name: #{@student.course.name}", size: 30, style: :bold
-        text " #{@student.course.description}", size: 30, style: :bold, align: :center, :color => "00f00f"
+        styled_text '<div style="text-align: center; size: 12;">This is to certify that</div>'
+        move_down 10
+        text " #{@student.name.upcase!}", size: 12, style: :bold, align: :center
+        move_down 10
+        styled_text '<div style="text-align: center; size: 12;">has satisfactiorily completed the course in </div>' 
+        move_down 10
+        text "#{@student.course.name.upcase!}", size: 14, style: :bold, align: :center
+        move_down 10
+        text " #{@student.course.description}", size: 12, align: :center
     end
     def signature
-      styled_text '<footer style="text-align: left">sdad </footer>'
+      text_box 'Aung Than Nyunt, B.E (Mech:)', :at => [bounds.width - 120, bounds.top - 500], :width => 150, size: 10;
+      text_box 'Managing Director', :at => [bounds.width - 120, bounds.top - 510], :width => 100, size: 10;
+      text_box "Date of Issue- #{DateTime.now.to_date}", :at => [bounds.width - 120, bounds.top - 530], :width => 150, size: 10, style: :bold;
     end
   end
