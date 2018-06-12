@@ -8,28 +8,28 @@ class StudentPdf < Prawn::Document
       signature
     end
     def header
-      text 'SOFT GUIDE COMPUTER TRAINING CERTER', size: 12, style: :bold, align: :center
+      text 'SOFT GUIDE COMPUTER TRAINING CERTER', size: 11, style: :bold, align: :center
       move_down 10
-      styled_text '<div  style="text-align: center; size: 12;">A Recognized Centre of Londan Chamber of Commerce & Industry</div>'
-      styled_text '<div style="text-align: center; size: 12;"> No.52, 19th St., Latha Tsp., Yangon. Tel: 382180</div>'
-      styled_text '<div style="text-align: center; size: 12;"> E-mail: softguide.atn@gmail.com</div>'
+      styled_text '<div  style="text-align: center; size: 10;">A Recognized Centre of London Chamber of Commerce & Industry</div>'
+      styled_text '<div style="text-align: center; size: 10;"> No.52, 19th St., Latha Tsp., Yangon. Tel: 382180</div>'
+      styled_text '<div style="text-align: center; size: 10;"> E-mail: softguide.atn@gmail.com</div>'
       move_down 30
     end
 
     def student_name
-        styled_text '<div style="text-align: center; size: 12;">This is to certify that</div>'
+        styled_text '<div style="text-align: center; size: 10;">This is to certify that</div>'
         move_down 10
-        text " #{@student.name.upcase!}", size: 12, style: :bold, align: :center
+        text " #{@student.name.upcase!}", size: 11, style: :bold, align: :center
         move_down 10
-        styled_text '<div style="text-align: center; size: 12;">has satisfactiorily completed the course in </div>' 
+        styled_text '<div style="text-align: center; size: 10;">has satisfactorily completed the course in </div>' 
         move_down 10
-        text "#{@student.course.name.upcase!}", size: 14, style: :bold, align: :center
+        text "#{@student.course.name.upcase!}", size: 12, align: :center, style: :bold
         move_down 10
-        text " #{@student.course.description}", size: 12, align: :center
+        text " #{@student.course.description}", size: 10, align: :center
     end
     def signature
-      text_box 'Aung Than Nyunt, B.E (Mech:)', :at => [bounds.width - 120, bounds.top - 500], :width => 150, size: 10;
-      text_box 'Managing Director', :at => [bounds.width - 120, bounds.top - 510], :width => 100, size: 10;
-      text_box "Date of Issue- #{DateTime.now.to_date}", :at => [bounds.width - 120, bounds.top - 530], :width => 150, size: 10, style: :bold;
+      text_box 'Aung Than Nyunt, B.E (Mech:)', :at => [bounds.width - 120, bounds.top - 490], :width => 150, size: 10;
+      text_box 'Managing Director', :at => [bounds.width - 120, bounds.top - 500], :width => 100, size: 10;
+      text_box "Date of Issue- #{DateTime.now.to_date}", :at => [bounds.width - 120, bounds.top - 520], :width => 150, size: 10, style: :bold;
     end
   end

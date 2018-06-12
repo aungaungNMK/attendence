@@ -61,7 +61,7 @@ Course.create(name: "Office 2010 Course", description: "Window's 7  \n Microsoft
 Course.create(name: "Office 2010 Course", description: "Window's 7  \n Microsoft Word 2010 \n Microsoft Excel 2010    \n Microsoft Power Point 2010  \n Scanning and Printing", user_id: User.find_by(name: "Thingunkyun").id)
 
 #Latha
-Course.create(name: "Office 2016 Course", description: "Window's 10 Microsoft \n Word 2016 Microsoft Excel 2016    \n Microsoft Power Point 2016  \n Scanning and Printing", user_id: User.find_by(name: "Latha").id)
+Course.create(name: "Office 2016 Course", description: "Window's 10 \n Microsoft Word 2016  \n Microsoft Excel 2016    \n Microsoft Power Point 2016  \n Scanning and Printing", user_id: User.find_by(name: "Latha").id)
 Course.create(name: "D.T.P Course", description: "Corel Draw X4   \n Adobe Photoshop C.S.3   \n Adobe PageMaker 7.0 \n Adobe Acrobat 7.0   \n Scanning and Printing", user_id: User.find_by(name: "Latha").id)
 Course.create(name: "Advanced Excel 2016 Course", description: "Advanced Excel 2016", user_id: User.find_by(name: "Latha").id)
 Course.create(name: "Graphic Design Course", description: " Adobe Illustrator C.S3  \n Adobe Photoshop C.S3    \n Animated Photo Creation \n Scanning and Printing", user_id: User.find_by(name: "Latha").id)
