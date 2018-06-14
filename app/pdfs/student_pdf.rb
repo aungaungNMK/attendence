@@ -1,7 +1,7 @@
 class StudentPdf < Prawn::Document
   require 'prawn-styled-text'
     def initialize(student)
-      super(top_margin: 119, left_margin: 15, :page_layout => :portrait, :page_size => [558, 708] ) #[380, 500]
+      super(top_margin: 119, :page_layout => :portrait, :page_size => "A4" ) #[380, 500]
       @student = student
       header
       student_name
@@ -28,8 +28,8 @@ class StudentPdf < Prawn::Document
         text " #{@student.course.description}", size: 10, align: :center
     end
     def signature
-      text_box 'Aung Than Nyunt, B.E (Mech:)', :at => [bounds.width - 120, bounds.top - 490], :width => 150, size: 10;
-      text_box 'Managing Director', :at => [bounds.width - 120, bounds.top - 500], :width => 100, size: 10;
-      text_box "Date of Issue- #{DateTime.now.to_date}", :at => [bounds.width - 120, bounds.top - 520], :width => 150, size: 10, style: :bold;
+      text_box 'Aung Than Nyunt, B.E (Mech:)', :at => [bounds.width - 150, bounds.top - 490], :width => 150, size: 10;
+      text_box 'Managing Director', :at => [bounds.width - 150, bounds.top - 500], :width => 100, size: 10;
+      text_box "Date of Issue #{DateTime.now.strftime("%d/%m/%Y")}", :at => [bounds.width - 150, bounds.top - 520], :width => 150, size: 8;
     end
   end
