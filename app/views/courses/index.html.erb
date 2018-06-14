@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Course Title</th>
       <th>Description</th>
       <th>Branch Name</th>
       <th></th>
@@ -18,6 +19,7 @@
     <% @courses.each do |course| %>
       <tr>
         <td><%= course.name %></td>
+        <td><%= course.title %></td>
         <td><%= course.description %></td>
         <td><%= course.user.name %></td>
         <td><%= link_to 'Show', course %></td>

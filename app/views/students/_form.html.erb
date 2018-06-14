@@ -26,9 +26,9 @@
       <div class="field">
         <%= form.label :course %>
         <% if current_user.admin? %>
-          <%= form.select :course_id, Course.all.map{ |c| [c.name, c.id]}, {:prompt => "select"}%>
+          <%= form.select :course_id, Course.all.map{ |c| [c.title, c.id]}, {:prompt => "select"}%>
         <% else %>
-          <%= form.select :course_id, options_from_collection_for_select(current_user.courses.all, 'id', 'name'), id: "course_id" %>
+          <%= form.select :course_id, options_from_collection_for_select(current_user.courses.all, 'id', 'title'), id: "course_id" %>
         <% end %>
       </div>
 
