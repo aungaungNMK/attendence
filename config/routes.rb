@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'students#index'
   match '/users',   to: 'users#index',   via: 'get'
   resources :users
+  resources :student_imports
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

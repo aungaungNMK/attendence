@@ -2,7 +2,6 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
-
   # GET /students
   # GET /students.json
   def index
@@ -11,9 +10,14 @@ class StudentsController < ApplicationController
         @students = Student.search(params[:user_id])
       end
         @students = Student.search(params[:user_id] )
-        render :admin_index
+        respond_to do |format|
+          format.html
+          format.csv { send_data @students.to_csv }
+          format.xls  #{ send_data @products.to_csv(col_sep: "\t") }
+        end
     else
       @students = Student.search(params[:search]).where(user_id: current_user.id)
+      render :user_index
     end
   end
 

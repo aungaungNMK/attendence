@@ -21,6 +21,15 @@ class Student < ApplicationRecord
         end
     end
 
+    def self.to_csv(options = {})
+        CSV.generate(options) do |csv|
+          csv << column_names
+          all.each do |student|
+            csv << student.attributes.values_at(*column_names)
+          end
+        end
+      end
+
     #private
     #def image_size_validation
      #   errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
